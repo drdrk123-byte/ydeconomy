@@ -1,0 +1,8 @@
+rules_version = '2';
+service cloud.firestore {
+ match /databases/{database}/documents {
+  // All application data is served through authenticated, role-filtered APIs.
+  // Firebase Admin bypasses rules; server authorization is mandatory.
+  match /{document=**} {allow read, write: if false;}
+ }
+}
